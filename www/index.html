@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Лабораторная работа №1 по Веб-программированию</title>
+</head>
+
+<body>
+    <header>
+        <h1>Чермантиев Илья P3230, вариант 409832</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="input-container">
+            <div class="input-row">
+                <label for="X-input" class="request-label">Введите X:</label>
+                <input type="text" id="X-input" maxlength="16">
+            </div>
+            <div class="input-row">
+                <label class="request-label">Введите Y:</label>
+                <div class="Y-input">
+                    <label><input name="Y-button-group" type="button" value="-5"></label>
+                    <label><input name="Y-button-group" type="button" value="-4"></label>
+                    <label><input name="Y-button-group" type="button" value="-3"></label>
+                    <label><input name="Y-button-group" type="button" value="-2"></label>
+                    <label><input name="Y-button-group" type="button" value="-1"></label>
+                    <label><input name="Y-button-group" type="button" value="0"></label>
+                    <label><input name="Y-button-group" type="button" value="1"></label>
+                    <label><input name="Y-button-group" type="button" value="2"></label>
+                    <label><input name="Y-button-group" type="button" value="3"></label>
+                </div>
+            </div>
+            <div class="input-row">
+                <label for="R-input" class="request-label">Введите R:</label>
+                <div id="R-input" class="R-input">
+                    <label><input name="R-radio-group" type="radio" value="1">1</label>
+                    <label><input name="R-radio-group" type="radio" value="2">2</label>
+                    <label><input name="R-radio-group" type="radio" value="3">3</label>
+                    <label><input name="R-radio-group" type="radio" value="4">4</label>
+                    <label><input name="R-radio-group" type="radio" value="5">5</label>
+                </div>
+            </div>
+        </div>
+        <div class="graph-container">
+            <canvas id="graph" width="350" height="350"></canvas>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button id="checkButton"><label>Проверить</label></button>
+    </div>
+
+    <div class="data-table-container">
+        <table class="data-table">
+            <thead>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Попал?</th>
+                <th>Время посылки</th>
+                <th>Время обработки (нс)</th>
+            </tr>
+            </thead>
+            <tbody id="outputContainer">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/Drawer.js"></script>
+</body>
+
+</html>
