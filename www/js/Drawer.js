@@ -25,6 +25,7 @@ class Drawer {
         this.setPointerAtDot(5);
         if (points.length > 0) {
             points.forEach(point => {
+                console.log(point.x, point.y, point.result);
                 this.drawPoint(point.x, point.y, point.result);
             });
         }
@@ -132,6 +133,6 @@ class Drawer {
     }
 
     pushPoint(corX, corY, isSh) {
-        points.push({x: corX, y: corY, res: isSh});
+        points.push({x: corX, y: corY, result: isSh});
     }
 }

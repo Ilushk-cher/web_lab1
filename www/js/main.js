@@ -37,8 +37,33 @@ window.onload = function() {
             let r = document.querySelector('input[name="R-radio-group"]:checked').value;
             console.log(x, y, r);
             const data = { x, y, r };
-            drawer.drawPoint(x, y, true);
-            drawer.pushPoint(x, y, true);
+            fetch(`/fastcgi/?x=${x}&y=${y}&r=${r}`, {
+                    method: 'GET'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const resultsContent = document.getElementById('outputContainer');
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                <td>${data.x}</td>
+                <td>${data.y}</td>
+                <td>${data.r}</td>
+                <td>${data.result}</td>
+                <td>${data.curTime}</td>
+                <td>${data.workTime}</td>
+            `;
+                resultsContent.appendChild(newRow);
+                const x = data.x;
+                const y = data.y
+                if (data.result == 'true') {
+                    drawer.drawPoint(x, y, true);
+                    drawer.pushPoint(x, y, true);
+
+                } else {
+                    drawer.drawPoint(x, y, false);
+                    drawer.pushPoint(x, y, false);
+                }
+            })
         }
     }
 }

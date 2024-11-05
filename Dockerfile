@@ -1,14 +1,9 @@
-# Use an official OpenJDK runtime as a parent image
+# Dockerfile для Java-приложения
 FROM openjdk:17-jdk
+EXPOSE 1337
+# Копируем jar файл
+COPY target/web_lab1-1.0-SNAPSHOT-jar-with-dependencies.jar /app.jar
+# Указываем точку входа
+ENTRYPOINT ["java", "-DFCGI_PORT=1337", "-jar", "app.jar"]
 
-# Set the working directory
-WORKDIR /app
-
-# Copy the JAR file into the container
-COPY target/web_lab1-1.0-SNAPSHOT-jar-with-dependencies.jar app.jar
-
-# Expose the port the app runs on
-EXPOSE 1212
-
-# Run the application
-ENTRYPOINT ["java", "-DFCGI_PORT=14123", "-jar", "app.jar"]
+# Открываем порт для FastCGI приложения

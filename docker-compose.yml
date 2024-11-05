@@ -1,21 +1,21 @@
 services:
   java-app:
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile
-    container_name: java-app
-    ports:
-      - "14123:14123"
+    expose:
+      - "1337"
+    restart: always
     networks:
       - backend
 
+
   nginx:
     build:
-      context: .
+      context: ./www
       dockerfile: Dockerfile.nginx
-    container_name: nginx
     ports:
-      - "1212:1212"
+      - "24598:24598"
     depends_on:
       - java-app
     networks:
